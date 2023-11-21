@@ -9,7 +9,7 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
         <br>
-        
+
 
         <!-- Role -->
         <div>
@@ -30,7 +30,7 @@
             </div>
 
             <div class="mt-2">
-                <label for "artisan" class="inline-flex items-center">
+                <label for ="artisan" class="inline-flex items-center">
                     <input type="radio" id="artisan" name="role" value="artisan" {{ old('role') == 'artisan' ? 'checked' : '' }} required autofocus autocomplete="role" class="form-radio">
                     <span class="ml-2">{{ __('Artisan') }}</span>
                 </label>
