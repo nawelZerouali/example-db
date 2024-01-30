@@ -1,7 +1,7 @@
 <div class="pre-loader">
     <div class="pre-loader-box">
         <div class="loader-logo">
-            <img src="artisan/vendors/images/apple-touch-icon.png" alt="Food Logo" />
+            <img src="artisan/vendors/images/justCLICK.png" alt="Food Logo" />
         </div>
 
         <div class="loading-text">Loading...</div>
@@ -24,7 +24,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(255, 223, 132, 0.8); /* Golden color */
+        background: rgba(255, 255, 255, 0.874); /* Golden color */
         display: flex;
         align-items: center;
         justify-content: center;

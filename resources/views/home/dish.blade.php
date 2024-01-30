@@ -186,7 +186,7 @@ h5{
                             <div class="product-box">
                                 <a href="{{ url('/product_details', $prod->id) }}">
                                     <div class="product-img">
-                                        <img class="img-fluid" src="{{ asset($prod->image) }}" alt="{{ $prod->name_prod }}">
+                                        <img class="img-fluid" src="{{ asset(json_decode($prod->image)[0]) }}" alt="{{ $prod->name_prod }}">
                                     </div>
                                     <div class="product-caption">
                                         <h4>{{ $prod->name_prod }}</h4>

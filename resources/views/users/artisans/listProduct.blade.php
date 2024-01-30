@@ -148,7 +148,7 @@
                             <li class="col-lg-4 col-md-6 col-sm-12">
                                 <div class="product-box">
                                     <div class="producct-img">
-                                        <img src="{{ asset($prod->image) }}" alt="{{ $prod->name_prod }}"/>
+                                        <img src="{{ asset(json_decode($prod->image)[0]) }}" alt="{{ $prod->name_prod }}"/>
                                     </div>
                                     <div class="product-caption">
                                         <h4><a href="#">{{ $prod->name_prod }}</a></h4>

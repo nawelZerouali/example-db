@@ -91,6 +91,7 @@ class ArtisanController extends Controller
     public function show_product()
     {
         if (Auth::id()) {
+           
             $id = Auth::user()->id;
             $data = Product::where("user_id", "=", $id)->get();
             return view('users.artisans.listProduct', compact('data'));
@@ -124,7 +125,7 @@ class ArtisanController extends Controller
             // Validate the incoming request
             $request->validate([
                 'name_prod' => 'required|string',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'image' => 'required',
                 'price' => 'required|numeric',
                 'quantity_min' => 'required|numeric',
                 'category_id' => 'required|exists:categories,id',
@@ -145,12 +146,17 @@ class ArtisanController extends Controller
             $data->description = $request->description;
             $data->user_id = $user_id;
             // Correct the variable name to $request->image
-            $imageName = time() . '.' . $request->image->extension();
-            // Correct the variable name to $request->image
-            $request->image->move(public_path('images'), $imageName);
-            $pathImage = 'images/' . $imageName;
-            // Use the arrow notation to set the 'image' property
-            $data->image = $pathImage;
+            $images = [];
+            foreach ($request->image as $image) {
+                $imageName = time() . '.' . $image->extension();
+                // Correct the variable name to $request->image
+                $image->move(public_path('images'), $imageName);
+                $pathImage = 'images/' . $imageName;
+                // Use the arrow notation to set the 'image' property
+                $images[] = $pathImage;     # code...
+            }
+            $data->image = json_encode($images);     # code...
+
             // Save the product and update the user
 
             $data->save();

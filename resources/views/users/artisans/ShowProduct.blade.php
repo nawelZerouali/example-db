@@ -208,7 +208,7 @@
     /* Add more styling as needed */
 
 
-    
+
 </head>
 
 <body>
@@ -233,8 +233,33 @@
                                 <tbody>
                                     <tr>
                                         <td class="col-md-4">
-                                            <img src="{{ asset($data->image) }}" alt="{{ $data->name_prod }}"
-                                                class="img-fluid custom-image">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <img src="{{ asset(json_decode($data->image)[0]) }}" alt="{{ $data->name_prod }}"
+                                                    class="img-fluid custom-image">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        @php
+                                                            $images = json_decode($data->image);
+                                                        @endphp
+                                                         @foreach ($images as $key => $value)
+                                                         @if($key>0)
+                                                         <div class="col-6 col-md-4">
+                                                             <div class="product-img mx-auto">
+                                                                 <img src="{{$value}}" alt="" />
+                                                             </div>
+                                                         </div>
+                                                         @endif
+
+                                                         @endforeach
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
                                         </td>
                                         <td class="col-md-8">
                                             <table class="table">
