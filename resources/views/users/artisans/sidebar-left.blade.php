@@ -1,7 +1,19 @@
+
+<style>
+     .logo img {
+        max-width: 85%; /* or a specific pixel value */
+        height:auto;/* La hauteur est automatiquement ajustée pour maintenir les proportions du logo */
+        display:block;
+
+
+      }
+</style>
 <div class="left-side-bar">
-    <div class="brand-logo">
-        <a href="{{ url('/')}}">
-            <img src="artisan/vendors/images/deskapp-logo.png" alt="" class="dark-logo" />
+    <div>
+        <a class="logo"  href="{{ url('/')}}">
+
+            <img src="artisan/vendors/images/apple-touch-icon11.png" alt="" >
+
 
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">

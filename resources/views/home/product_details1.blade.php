@@ -65,6 +65,68 @@
             animatedDiv.style.opacity = 5; // Change l'opacité à 1 (visible) une fois que la page est chargée
         });
     </script>
+    <script>
+        function rate1() {
+            if(document.getElementById('star1').checked){
+                document.getElementById('s1').style.color = 'yellow';
+                document.getElementById('s2').style.color = '#ddd';
+                        document.getElementById('s3').style.color = '#ddd';
+                        document.getElementById('s4').style.color = '#ddd';
+                        document.getElementById('s5').style.color = '#ddd';
+            }
+                    }
+                    function rate2() {
+                        if(document.getElementById('star2').checked){
+                document.getElementById('s1').style.color = 'yellow';
+                document.getElementById('s2').style.color = 'yellow';
+                document.getElementById('s3').style.color = '#ddd';
+                        document.getElementById('s4').style.color = '#ddd';
+                        document.getElementById('s5').style.color = '#ddd';
+            }
+                    }
+                    function rate3() {
+                        if(document.getElementById('star3').checked){
+                document.getElementById('s1').style.color = 'yellow';
+                document.getElementById('s2').style.color = 'yellow';
+                document.getElementById('s3').style.color = 'yellow';
+                document.getElementById('s4').style.color = '#ddd';
+                        document.getElementById('s5').style.color = '#ddd';
+
+            }
+                    }
+                    function rate4() {
+                        if(document.getElementById('star4').checked){
+                        document.getElementById('s1').style.color = 'yellow';
+                        document.getElementById('s2').style.color = 'yellow';
+                        document.getElementById('s3').style.color = 'yellow';
+                        document.getElementById('s4').style.color = 'yellow';
+                        document.getElementById('s5').style.color = '#ddd';
+
+                        }
+                    }
+                    function rate5() {
+                        if(document.getElementById('star5').checked){
+
+                        document.getElementById('s1').style.color = 'yellow';
+                        document.getElementById('s2').style.color = 'yellow';
+                        document.getElementById('s3').style.color = 'yellow';
+                        document.getElementById('s4').style.color = 'yellow';
+                        document.getElementById('s5').style.color = 'yellow';
+                        }
+                    }
+
+        // $(document).ready(function () {
+        //     $('.rate input').click(function () {
+        //         // Désélectionner toutes les étoiles
+        //         $('.rate label').css('color', '#ddd');
+
+        //         // Sélectionner toutes les étoiles jusqu'à celle sur laquelle vous avez cliqué
+        //         $(this).prevAll('input').addBack().prevAll('label').css('color', 'yellow');
+        //     });
+
+       // });
+    </script>
+
     <!-- End Google Tag Manager -->
 </head>
 
@@ -675,7 +737,7 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
                                                 @csrf
                                                 <input type="hidden" value="{{ $product->id }}" name="prod_id" />
                                                 <div>
-                                                    <div class="rate">
+                                                    {{-- <div class="rate">
                                                         <input type="radio" id="star5" name="rating"
                                                             value="5" />
                                                         <label for="star5" title="text">5 stars</label>
@@ -692,7 +754,45 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
                                                             value="1" />
                                                         <label for="star1" title="text">1 star</label>
 
+                                                    </div> --}}
+
+                                                    <style>
+                                                        .rate {
+                                                            display: inline-block;
+                                                        }
+
+                                                        .rate input {
+                                                            display: none;
+                                                        }
+
+                                                        .rate label {
+                                                            font-size: 30px;
+                                                            color: #ddd;
+                                                            cursor: pointer;
+                                                            transition: color 0.3s ease;
+                                                        }
+
+                                                        .rate input:checked + label,
+                                                        .rate label:hover,
+                                                        .rate label:hover ~ label {
+                                                            color: yellow; /* Change this to your desired hover color */
+                                                        }
+                                                    </style>
+
+                                                    <div class="rate">
+                                                        <input type="radio" id="star5" name="rating" value="5" onclick="rate5()" />
+                                                        <label for="star5" title="5 stars" id="s5">&#9733;</label>
+                                                        <input type="radio" id="star4" name="rating" value="4" onclick="rate4()"  />
+                                                        <label for="star4" title="4 stars" id="s4">&#9733;</label>
+                                                        <input type="radio" id="star3" name="rating" value="3"onclick="rate3()" />
+                                                        <label for="star3" title="3 stars" id="s3">&#9733;</label>
+                                                        <input type="radio" id="star2" name="rating" value="2" onclick="rate2()" />
+                                                        <label for="star2" title="2 stars" id="s2">&#9733;</label>
+                                                        <input type="radio" id="star1" name="rating" value="1" onclick="rate1()"/>
+                                                        <label for="star1" title="1 star" id="s1">&#9733;</label>
+                                                        <i class="fas fa-star-light mr-1 main_star"></i>
                                                     </div>
+
                                                     <br>
                                                     <div>
                                                         <textarea name="review" style=" width:300px ; hieght:50px;"></textarea>
