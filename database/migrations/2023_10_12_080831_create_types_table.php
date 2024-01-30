@@ -11,12 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_type');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-        });
+
+            Schema::create('types', function (Blueprint $table) {
+                $table->id();
+                $table->string('name_type');
+                $table->unsignedBigInteger('category_id'); // The foreign key to link with categories
+                $table->foreign('category_id')->references('id')->on('categories');
+              
+                $table->timestamps();
+            });
+
+
     }
 
     /**

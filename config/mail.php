@@ -114,7 +114,7 @@ return [
     */
 
     'markdown' => [
-        'theme' => 'default',
+     //   'theme' => 'defaultphp artisan cache:clear',
 
         'paths' => [
             resource_path('views/vendor/mail'),
