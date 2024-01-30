@@ -46,13 +46,14 @@ class RegisteredUserController extends Controller
             'address' => ['nullable', 'string'],
             'Heur_Overture' => ['nullable', 'string'],
             'Heur_Fermetur' => ['nullable', 'string'],
-         
+
             'Description' => ['nullable', 'string'],
             'Dispo' => ['nullable', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
         ]);
+
 
         $user = User::create([
             'name' => $request->name,

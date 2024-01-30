@@ -52,9 +52,9 @@
                         <td>
                             @if($d->Dispo == "Yes")
 
-                            
 
-                            <button    type="button" id="sa-custom-position"  class="btn mb-20 btn-primary btn-block" href="{{ url('dispo_mission', ['orderId' => $order->id]) }}" >send order</button></td>
+
+                            <a    type="button" id="sa-custom-position"  class="btn mb-20 btn-primary btn-block" href="{{ url('dispo_mission', ['orderId' => $order->id, 'deliveryman' =>  $d->id]) }}" >send order</a></td>
                           @else
                             <a>Delivered</a>
                           @endif

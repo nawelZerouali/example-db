@@ -244,6 +244,7 @@
             <h2 class="comment">Your Opinion about {{ $artisan->name }}</h2>
             <form action="{{ url('add_comment') }}" method="POST">
                 @csrf
+                <input type="hidden" name="victime_id" value="{{$artisan->id}}">
                 <textarea id="commentTextarea" name="comment" placeholder="Comment something here ..."></textarea>
                 <br>
                 <input type="submit" class="btn btn-primary" value="Comment">

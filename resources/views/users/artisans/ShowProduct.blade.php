@@ -208,7 +208,7 @@
     /* Add more styling as needed */
 
 
-    </style>
+    
 </head>
 
 <body>

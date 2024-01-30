@@ -60,7 +60,7 @@ Route::get('/charts',[ArtisanController::class,'charts']);
 
 Route::get('/list_deliveryman/{id}',[ArtisanController::class,'list_deliveryman']);
 
-Route::get('/dispo_mission/{orderId}',[ArtisanController::class,'dispo_mission']);
+Route::get('/dispo_mission/{orderId}/{deliveryman}',[ArtisanController::class,'dispo_mission']);
 //deliveryman
 
 

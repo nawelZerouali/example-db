@@ -324,12 +324,10 @@ class ArtisanController extends Controller
         return view('users.artisans.list_deliveryman', compact('dev', 'order'));
     }
 
-    public function dispo_mission($orderId)
+    public function dispo_mission($orderId, $deliveryId)
     {
         $order = Order::find($orderId);
-
-        $deliveryman = User::where('role', '=', 'deliveryman')->
-        where('Dispo', '=', 'Yes')->first();
+        $deliveryman = User::find($deliveryId);
 
         if (!$deliveryman) {
             // Handle the case where no available deliveryman is found

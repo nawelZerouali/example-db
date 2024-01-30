@@ -209,7 +209,7 @@ class HomeController extends Controller
             $cart = Cart::find($cart_id);
             $cart->delete();
         }
-       
+
         Session::flash('success', 'Payment successful!');
 
         return back();
@@ -240,8 +240,11 @@ class HomeController extends Controller
     public function add_comment(Request $request)
     {
         if (Auth::id()) {
-            $comment = new Comment;
+            $comment = new Comment();
             $comment->name = Auth::user()->name;
+            if(isset($request->victime_id)){
+                $comment->victime_id = $request->victime_id;
+            }
             $comment->user_id = Auth::user()->id;
             $comment->comment = $request->comment;
             $comment->save();
@@ -269,7 +272,7 @@ class HomeController extends Controller
 
     public function product_search(Request $request)
     {
-        $comment = Comment::orderby('id', 'desc')->get();
+        $comment = Comment::whereNull('victime_id')->orderby('id', 'desc')->get();
         $reply = Reply::all();
         $search_text = $request->search;
 
@@ -320,7 +323,7 @@ class HomeController extends Controller
 
     public function artisan_profile($id)
     {
-        $comment = Comment::orderby('id', 'desc')->get();
+        $comment = Comment::where('victime_id',$id)->orderby('id', 'desc')->get();
         $reply = Reply::all();
         $artisan = User::find($id);
 
@@ -337,7 +340,8 @@ class HomeController extends Controller
     public function deliveryman_profile($id)
     {
 
-        $comment = Comment::orderby('id', 'desc')->get();
+        $comment = Comment::where('victime_id',$id)->orderby('id', 'desc')->get();
+
         $reply = Reply::all();
         $deliveryman = User::find($id);
 

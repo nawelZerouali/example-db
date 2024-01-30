@@ -276,7 +276,7 @@
 
                                                             <label class="btn ">
                                                                 <input type="radio" name="role"
-                                                                    id="user" value="delivered"
+                                                                    id="user" value="deliveryman"
                                                                     onclick="showAdditionalFields('delivered')">
                                                                  <div class="icon">
                                                                     <img src="artisan/vendors/images/person11.png"
