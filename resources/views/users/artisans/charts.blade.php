@@ -40,7 +40,7 @@
 
         /* Heading Styles */
         h1 {
-            color: white;
+            color: rgb(11, 10, 10);
             /* Accent color for headings */
             font-size: 80%;
         }
@@ -139,7 +139,7 @@
 
 <body>
 
-   
+
     @include('users.artisans.header')
 
     @include('users.artisans.sidebar-right')
@@ -182,7 +182,7 @@
                     </div>
 
                     <div class="container px-2 mx-auto center">
-                        <div class="p-6 m-200 bg-gray rounded shadow" style="width: 300px; height: 320px;">
+                        <div class="p-6 m-200 bg-gray rounded shadow" style="width: 600px; height: 600px;">
                             <h1>{{ $chart1->options['chart_title'] }}</h1>
                             {!! $chart1->renderHtml() !!}
                         </div>
@@ -190,8 +190,8 @@
 
                     <style>
                         canvas {
-                            width: 100% !important;
-                            height: auto !important;
+                            width: 100% !important;.
+                            height: 100% !important;
                         }
                     </style>
 

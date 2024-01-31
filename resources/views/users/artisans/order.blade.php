@@ -166,7 +166,7 @@ input[type="text"] {
                             <td>{{ $prod->delivery_status }}</td>
                             <td>
                                 <button class="btn btn-success"  >
-                                    <a href="{{ url('/show_order', $prod->id) }}" style="color:white"><i class="dw dw-eye white" style="color:white" ></i> View</a>
+                                    <a href="{{ url('/show_order', $prod->id) }}" style="color:white"><i class="dw dw-eye white" style="color:white" ></i></a>
 
                                 </button>
                             </td>

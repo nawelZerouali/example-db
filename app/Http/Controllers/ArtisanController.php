@@ -91,7 +91,7 @@ class ArtisanController extends Controller
     public function show_product()
     {
         if (Auth::id()) {
-           
+
             $id = Auth::user()->id;
             $data = Product::where("user_id", "=", $id)->get();
             return view('users.artisans.listProduct', compact('data'));
@@ -102,7 +102,8 @@ class ArtisanController extends Controller
     public function show_order($id)
     {
         // Find the product by its ID
-        $data = Order::find($id);
+        $data = Order::with('order_products.product')->find($id);
+
         return view('users.artisans.show_order', compact('data'));
     }
 
@@ -305,8 +306,8 @@ class ArtisanController extends Controller
     {
         if (Auth::check()) {
             $id = Auth::user()->id;
-            $idProd = Product::where('user_id', $id)->pluck('id')->toArray();
-            $orders = Order::whereIn('prod_id', $idProd)->get();
+          //  $idProd = Product::where('user_id', $id)->pluck('id')->toArray();
+            $orders = Order::with('order_products')->where('seller_id', $id)->get();
             return view('users.artisans.order', compact('orders'));
         }
     }

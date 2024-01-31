@@ -35,9 +35,9 @@
 
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon bi bi-briefcase"></span>
 
-                        <span class="micon bi bi-textarea-resize"></span
-                        ><span class="mtext">Management</span>
+                        <span class="mtext">Management</span>
                     </a>
                     <ul class="submenu">
                         <li><a href="{{ url('view_category') }}">Category Management</a></li>
@@ -51,8 +51,7 @@
 
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon bi bi-table"></span
-                        ><span class="mtext">Products</span>
+                        <span class=" micon bi bi-box"></span><span class="mtext">Products</span>
                     </a>
 
                     <ul class="submenu">
@@ -63,7 +62,7 @@
 
                 <li>
                     <a href="{{ url('order') }}" class="dropdown-toggle no-arrow">
-                        <span class="micon bi bi-calendar4-week"></span
+                        <span class="micon bi bi-cart"></span
                         ><span class="mtext">Order Management</span>
                     </a>
                 </li>

@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Comment;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\QuantityCommande;
 use App\Models\Reply;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -104,11 +105,14 @@ class HomeController extends Controller
     {
         if (Auth::id()) {
             $user = Auth::user();
-            $userid = $user->id;
+           // $userid = $user->id;
             $product = Product::find($id);
-            $cart = new Cart;
+            //hna khss tzidou column f table cart , smiwha seller_id
+            $cart = new Cart();
             $cart->name = $user->name;
             $cart->email = $user->email;
+            // ki tzidouha , decommentiw had la ligne
+            $cart->seller_id = $product->user_id;
             $cart->phone = $user->phone;
             $cart->address = $user->address;
             $cart->product_title = $product->name_prod;
@@ -148,27 +152,62 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $userid = $user->id;
+        //hna khss 9bl dirou whd l groupby 'seller_id', normalement hakk :
+        //$data = Cart::where('user_id', '=', $userid)->groupBy('seller_id')->get();
+        //hna ghi bach t3rfou ch7al kyn m seller f had lcart te3 l user
         $data = Cart::where('user_id', '=', $userid)->get();
-        foreach ($data as $data) {
-            $order = new Order;
-            $order->name = $data->name;
-            $order->email = $data->email;
-            $order->phone = $data->phone;
-            $order->address = $data->address;
-            $order->user_id = $data->user_id;
-            $order->product_title = $data->product_title;
-            $order->quantity = $data->quantity;
-            $order->price = $data->price;
-            $order->image = $data->image;
-
-            $order->prod_id = $data->prod_id;
+        $groupedCarts = $data->groupBy('seller_id');
+        ////////////////////////
+        foreach ($groupedCarts as $sellerId => $carts) {
+            // Create an order for each group
+            $order = new Order();
+          //  $order->product_title = '';
+            $order->name = $carts[0]->name;
+            $order->email = $carts[0]->email;
+            $order->phone = $carts[0]->phone;
+            $order->address = $carts[0]->address;
+            $order->user_id = $carts[0]->user_id;
+            $order->prod_id = $carts[0]->prod_id;
+            $order->seller_id = $carts[0]->seller_id;
             $order->payment_status = 'cash on delivery';
             $order->delivery_status = 'processing';
+            $order->image = '';
+            $quantity = $price = 0;
             $order->save();
-            $cart_id = $data->id;
-            $cart = Cart::find($cart_id);
-            $cart->delete();
+
+            // Add items to the order from each cart in the group
+            foreach ($carts as $cart) {
+                // Append product information from each cart to the order
+                $order->product_title .= $cart->product_title . ', ';
+                $quantity += $cart->quantity;
+                $price += $cart->price;
+
+                // Create order products for each cart item and delete the cart item
+                $orderProduct = new QuantityCommande();
+                $orderProduct->quantity = $cart->quantity;
+                $orderProduct->price = $cart->price;
+                $orderProduct->prod_id = $cart->prod_id;
+                $orderProduct->order_id = $order->id;
+                $orderProduct->save();
+
+                // Delete the cart item
+                $cart->delete();
+            }
+            // Remove the trailing comma and space from product_title
+            $order->product_title = rtrim($order->product_title, ', ');
+            // Set total quantity and total price for the order
+            $order->quantity = $quantity;
+            $order->price = $price;
+
+            // Save the order
+            $order->save();
         }
+        ////////////////////
+
+
+
+
+
         return redirect()->back()->with('message', 'We Received Your  Order , We Will connect with you soon...');
     }
     public function stripe($totalprice)

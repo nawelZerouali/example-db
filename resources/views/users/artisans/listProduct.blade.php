@@ -147,7 +147,7 @@
                             @foreach ($data as $prod)
                             <li class="col-lg-4 col-md-6 col-sm-12">
                                 <div class="product-box">
-                                    <div class="producct-img">
+                                    <div class="product-img">
                                         <img src="{{ asset(json_decode($prod->image)[0]) }}" alt="{{ $prod->name_prod }}"/>
                                     </div>
                                     <div class="product-caption">

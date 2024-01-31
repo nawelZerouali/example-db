@@ -157,7 +157,7 @@ input.input{
     <div class="main-container">
 
 
-                
+
 
 
                         <div class="pd-20 card-box mb-30">
@@ -172,8 +172,27 @@ input.input{
                                     <tbody>
                                         <tr>
                                             <td class="col-md-4">
-                                                <img src="{{ asset($data->image) }}" alt="{{ $data->product_title }}" class="img-fluid custom-image">
+
+                                                        @php
+                                                            $images = json_decode($data->image, true);
+                                                        @endphp
+
+                                                        @if ($images && is_array($images))
+                                                            @foreach ($images as $key => $value)
+                                                                @if ($key > 0)
+                                                                    <div class="col-6 col-md-4">
+                                                                        <div class="product-img mx-auto">
+                                                                            <img src="{{ $value }}" alt="" />
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                  
+
                                             </td>
+
+
                                             <td class="col-md-8">
                                                 <table class="table">
                                                     <tbody>
@@ -222,6 +241,12 @@ input.input{
                                         </tr>
                                     </tbody>
                                 </table>
+                                <ul>
+                                    @foreach ($data->order_products as $product)
+                                    <p>{{$product->product->name_prod}}</p>
+                                    @endforeach
+                                    <li></li>
+                                </ul>
                             </div>
 
                         </div>

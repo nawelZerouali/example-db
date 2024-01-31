@@ -6,8 +6,9 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="home/img/favicon.png" type="image/png">
-	<title>Food Bar</title>
+
+	<link rel="icon" href="home/img/justCLICK.png" type="image/png">
+	<title>JUST CLICK</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="home/css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
@@ -28,6 +29,16 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
 
+
+     body {
+        /*background-color: rgb(251, 245, 236)*/
+
+
+    margin: auto;
+    padding: auto;
+    background: url('artisan/vendors/images/site.png') no-repeat center center fixed;
+    background-size: cover;
+    }
 
         .comment-section {
             display: flex;
@@ -198,7 +209,7 @@
 	<!--================ End Top Dish Area =================-->
 
 	<!--================ Menu Area =================-->
-
+    @include('home.Offcanvus')
 	<!--================End Menu Area =================-->
 
     <!--================ Comment and Replay System Starts Here =================-->

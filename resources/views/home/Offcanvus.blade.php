@@ -190,7 +190,7 @@
         position: fixed;
         z-index: 99;
         box-shadow: 0 0 10px #360505;
-        background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);;
+        background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
         border-bottom-left-radius: 30px;
         border-bottom-right-radius: 30px;
     }

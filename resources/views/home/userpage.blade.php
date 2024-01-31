@@ -5,8 +5,8 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="artisan/vendors/images/justCLICK.png" type="image/png">
-	<title>Just Click</title>
+    <link rel="icon" href="home/img/justCLICK.png" type="image/png">
+	<title>JUST CLICK</title>
 	<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 	<link rel="stylesheet" href="home/css/bootstrap.css">
@@ -313,7 +313,7 @@
 	<!--================End Member Area =================-->
 
 	<!--================Book Table Area =================-->
-	
+
 	<!--================End Book Table Area =================-->
 
 	<!--================ start footer Area  =================-->

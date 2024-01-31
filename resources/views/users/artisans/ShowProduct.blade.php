@@ -200,12 +200,53 @@
         .btn-delivery {
             background-color: #27ae60;
         }
+        .f{
+            border-radius: 20px; /* You can adjust the pixel value as needed */
+        }
+
+        .product-img img  {
+    border-radius: 10px; /* You can adjust the pixel value as needed */
+}
+
+.product-img img:hover {
+    transform: scale(1.5); /* You can adjust the scale factor as needed */
+}
+.rounded-image {
+    border-radius: 25px; /* You can adjust the pixel value as needed */
+}
+/* styles.css */
+
+/* styles.css */
+
+.rounded-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px; /* Adjust the value as per your preference */
+    overflow: hidden;
+}
+
+.rounded-table th, .rounded-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.black-btn {
+
+        color: #090909;
+    }
+    /* styles.css */
+
+.table-header-bg {
+    background-color: #dbb455;
+    color: #fff; /* Set the text color to white or another suitable color */
+}
+
 
         /* Add more styling as needed */
     </style>
 
 
-    /* Add more styling as needed */
 
 
 
@@ -234,33 +275,35 @@
                                     <tr>
                                         <td class="col-md-4">
                                             <div class="row">
-                                                <div class="col-12">
+                                                <div class="col-20">
                                                     <img src="{{ asset(json_decode($data->image)[0]) }}" alt="{{ $data->name_prod }}"
-                                                    class="img-fluid custom-image">
+                                                        class="img-fluid custom-image rounded">
                                                 </div>
-                                                <div class="col-12">
+
+                                                <br>
+                                                <br>
+                                                <div class="col-16">
                                                     <div class="row">
                                                         @php
                                                             $images = json_decode($data->image);
                                                         @endphp
-                                                         @foreach ($images as $key => $value)
-                                                         @if($key>0)
-                                                         <div class="col-6 col-md-4">
-                                                             <div class="product-img mx-auto">
-                                                                 <img src="{{$value}}" alt="" />
-                                                             </div>
-                                                         </div>
-                                                         @endif
-
-                                                         @endforeach
-
-
+                                                        @foreach ($images as $key => $value)
+                                                            @if ($key > 0)
+                                                                <br>
+                                                                <div class="col-10 col-md-6">
+                                                                    <div class="product-img rounded">
+                                                                        <img src="{{$value}}" alt="" />
+                                                                    </div>
+                                                                    <br>
+                                                                </div>
+                                                                <br>
+                                                            @endif
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </td>
+
                                         <td class="col-md-8">
                                             <table class="table">
                                                 <tbody>
@@ -294,19 +337,19 @@
                                     </tr>
                                 </tbody>
                             </table>
-                                <table class="table table-bordered">
+                                <table class="table table-bordered rounded-table">
                                             <thead>
                                                 <tr>
 
-                                                    <th>Name Customer</th>
-                                                    <th>Email Customer</th>
-                                                    <th>Name Product</th>
-                                                    <th>Quantity</th>
-                                                    <th>Price</th>
-                                                    <th>Payment_status</th>
-                                                    <th>Delivery_status</th>
-                                                    <th>Date</th>
-                                                    <th>Actions</th>
+                                                    <th class="table-header-bg">Name Customer</th>
+                                                    <th class="table-header-bg">Email Customer</th>
+                                                    <th class="table-header-bg">Name Product</th>
+                                                    <th class="table-header-bg">Quantity</th>
+                                                    <th class="table-header-bg">Price</th>
+                                                    <th class="table-header-bg">Payment_status</th>
+                                                    <th class="table-header-bg">Delivery_status</th>
+                                                    <th class="table-header-bg">Date</th>
+                                                    <th class="table-header-bg">Actions</th>
 
                                                 </tr>
                                             </thead>
@@ -323,7 +366,7 @@
                                                         <td>{{ $order->delivery_status }}</td>
                                                         <td>{{ $order->created_at->format('M d, Y') }}</td>
                                                         <td>
-                                                                <a  class="btn btn-primary"href="{{ url('/show_order', $order->id) }}" style="color:white"><i class="dw dw-eye white" style="color:white" ></i> View</a>
+                                                                <a  class="black-btn " href="{{ url('/show_order', $order->id) }}" style="color:white"><i class="dw dw-eye white" style="color: rgb(20, 119, 6); font-size: 20px; display: block; text-align: center;" ></i> </a>
                                                         </td>
                                                     </tr>
                                                 @empty

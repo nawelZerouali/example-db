@@ -6,7 +6,8 @@
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
     {{-- <title>DeskApp - Bootstrap Admin Dashboard HTML artisan</title> --}}
-
+    <link rel="icon" href="home/img/justCLICK.png" type="image/png">
+	<title>JUST CLICK</title>
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="artisan/vendors/images/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="artisan/vendors/images/favicon-32x32.png" />
@@ -390,10 +391,7 @@
                 -webkit-tap-highlight-color: transparent;
             }
 
-            .page-header.h1 {
-                animation: rotateAnimation 10s infinite;
-                /* Ajoute une animation de rotation infinie de 2 secondes */
-            }
+
 
             @keyframes rotateAnimation {
 
@@ -419,19 +417,8 @@
     <div class="mobile-menu-overlay"></div>
     @if ($product)
         <div class="main-container">
-            <div class="page-header"
-                style=" margin-top:0vh;
-            text-align: center;
-            margin-top: 20vh;
-            opacity: 0;
-            width: 80%;
-            margin: 0 auto;
-            transition: opacity 10s ease-in-out;"
-                id="animatedDiv">
-                <h3 class="word" style="text-align: center; margin-top: 0vh; color:">
-                    Click for a tasty treat</h3>
-            </div><br>
-
+           <br>
+<br>
             <script>
                 words = ['hey I like SASS', 'I used to like LESS', 'I also heart Jade'],
                     part,
@@ -482,13 +469,22 @@
             <style>
                 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 
-                .word {
-                    margin: auto;
-                    color: white;
-                    font: 700 normal 4em/1.5 "Montserrat", sans-serif;
-                    text-shadow: 1px 2px #bc8f1d, 2px 4px #bc8f1d, 3px 6px #bc8f1d, 4px 8px #bc8f1d, 5px 10px #bc8f1d, 6px 12px #bc8f1d, 7px 14px #bc8f1d, 8px 16px #bc8f1d, 9px 18px #bc8f1d, 10px 20px #bc8f1d;
-                }
+
+                .product-img img  {
+    border-radius: 10px; /* You can adjust the pixel value as needed */
+}
+
+.product-img img:hover {
+    transform: scale(1.5); /* You can adjust the scale factor as needed */
+}
+.rounded-image {
+    border-radius: 25px; /* You can adjust the pixel value as needed */
+}
+
             </style>
+
+
+
 
             <div class="product-wrap">
                 <div class="product-detail-wrap mb-30">
@@ -496,10 +492,13 @@
 
                         {{-- <div class="product-slider slider-arrow"> --}}
                         <div class="product-slide col-lg-4 col-md-10 col-sm-6">
-                            <div class="col-12">
+                            <div class="col-16">
                                 <img style=" width:500px;" src="{{ asset(json_decode($product->image)[0]) }}"
-                                    alt="{{ $product->name_prod }}" />
+                                    alt="{{ $product->name_prod }}" class="img-fluid custom-image rounded" />
                             </div>
+
+                            <br>
+                            <br>
                             <div class="col-12">
                                 <div class="row">
                                     @php
@@ -508,10 +507,12 @@
 
                                     @foreach ($images as $key => $value)
                                     @if($key>0)
-                                    <div class="col-6 col-md-4">
+                                    <div class="col-12 col-md-10">
                                         <div class="product-img mx-auto">
                                             <img src="{{$value}}" alt="" />
                                         </div>
+
+                                        <br>
                                     </div>
                                     @endif
 
@@ -528,13 +529,13 @@
 
                         <div class="col-lg-8 col-md-12 col-sm-6">
                             <div class="product-detail-desc pd-20 card-box height-100-p ">
-                                <h4 style="color:#F1C93B">&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                                <h4 style="color:#000000" class="word">&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                                     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
                                     &nbsp;&nbsp;{{ $product->name_prod }}</h4>
 
                                 <p> <label style="color:#F1C93B"><b>Minimum
-                                            Quantity </b></label>&nbsp;&nbsp;{{ $product->quantity_min }}</p>
+                                            Quantity:</b></label>&nbsp;&nbsp;{{ $product->quantity_min }}</p>
                                 <p><label style="color:#F1C93B"><b>description : </b></label>&nbsp;&nbsp;
                                     {{ $product->description }}
                                 </p>
@@ -551,7 +552,7 @@
                                     <form action="{{ url('/add_cart', $product->id) }}" method="POST"
                                         style="display: flex; align-items: center;">
                                         @csrf
-
+<!--cbn hna ma dirou walou-->
 
                                         <input type="number" class="quantity-input" name="quantity" value="1"
                                             min="1"style="width: 100px; padding: 5px;"> &nbsp;&nbsp;
@@ -638,7 +639,7 @@ $progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endph
 
                                                         <div class="progress-bar bg-warning" role="progressbar"
                                                             @php
-$progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endphp
+$progressWidth = ($average != 0) ? ($fourStarCount / $average) * 100 : 0; @endphp
                                                             style="width: {{ $progressWidth }}%;"
                                                             aria-valuenow="{{ $progressWidth }}" aria-valuemin="0"
                                                             aria-valuemax="100" id="five_star_progress">
@@ -656,7 +657,7 @@ $progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endph
                                                     <div class="progress">
                                                         <div class="progress-bar bg-warning" role="progressbar"
                                                             @php
-$progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endphp
+$progressWidth = ($average != 0) ? ($threeStarCount / $average) * 100 : 0; @endphp
                                                             style="width: {{ $progressWidth }}%;"
                                                             aria-valuenow="{{ $progressWidth }}" aria-valuemin="0"
                                                             aria-valuemax="100" id="five_star_progress">

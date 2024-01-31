@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="icon" href="home/img/favicon.png" type="image/png">
-	<title>Food Bar</title>
+	<link rel="icon" href="home/img/justCLICK.png" type="image/png">
+	<title>JUST CLICK</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="home/css/bootstrap.css">
 	<link rel="stylesheet" href="vendors/linericon/style.css">
@@ -28,18 +28,18 @@
         margin-top: 50px; /* Adjust the margin-top as needed to move it down */
         text-align: center;
     }
-    
+
     h1 {
         font-size: 36px; /* Adjust the font size as needed */
         color: #333; /* Adjust the color as needed */
     }
-    
+
     hr {
         border: 2px solid #333; /* Match the color of the title */
         margin: 20px auto; /* Add margin to the hr for spacing */
         width: 50%; /* Adjust the width as needed */
     }
-    
+
     /* Styles for decorative elements */
     .round-planet {
         display: flex;
@@ -47,28 +47,28 @@
         align-items: center;
         margin-top: 20px; /* Adjust the margin-top as needed for spacing */
     }
-    
+
     .planet {
         background-color: #9492f8; /* Match the color of the title */
         border-radius: 50%;
         height: 60px;
         width: 60px;
     }
-    
+
     .planet2 {
         background-color: #fff; /* Set the background color of the inner planet */
         border-radius: 50%;
         height: 40px;
         width: 40px;
     }
-    
+
     .shape {
         background-color:#333; /* Match the color of the title */
         border-radius: 50%;
         height: 10px;
         width: 10px;
     }
-    
+
     .shape1 {
         margin-right: 10px; /* Adjust the margin as needed for spacing */
     } .quantity-container {
@@ -144,7 +144,7 @@
     }
     h2{
         text-align: center;
-    
+
     }
     h2::after {
         content: ' .D.A ';
@@ -182,12 +182,12 @@
         transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions on hover */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
     }
-    
+
     button.btn-primary:hover {
         background-color: #45a049; /* Hover background color (darker green) */
         transform: scale(1.05); /* Increase size on hover */
     }
-    
+
 </style>
 </head>
 <body>
@@ -218,9 +218,9 @@
         </div>
     </div>
 <div class="container">
-    
+
     <h2>Total Amount : {{ $totalprice }} </h2>
-    
+
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default credit-card-box">
@@ -228,31 +228,31 @@
                         <h3 class="panel-title" >Payment Details</h3>
                 </div>
                 <div class="panel-body">
-    
+
                     @if (Session::has('success'))
                         <div class="alert alert-success text-center">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
                             <p>{{ Session::get('success') }}</p>
                         </div>
                     @endif
-    
-                    <form 
-                            role="form" 
-                            action="{{ route('stripe.post', ['totalprice' => $totalprice]) }}" 
-                            method="post" 
+
+                    <form
+                            role="form"
+                            action="{{ route('stripe.post', ['totalprice' => $totalprice]) }}"
+                            method="post"
                             class="require-validation"
                             data-cc-on-file="false"
                             data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                             id="payment-form">
                         @csrf
-    
+
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <label class='control-label'>Name on Card</label> <input
                                     class='form-control' size='4' type='text'>
                             </div>
                         </div>
-    
+
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
                                 <label class='control-label'>Card Number</label> <input
@@ -260,7 +260,7 @@
                                     type='text'>
                             </div>
                         </div>
-    
+
                         <div class='form-row row'>
                             <div class='col-xs-12 col-md-4 form-group cvc required'>
                                 <label class='control-label'>CVC</label> <input autocomplete='off'
@@ -278,28 +278,28 @@
                                     type='text'>
                             </div>
                         </div>
-    
+
                         <div class='form-row row'>
                             <div class='col-md-12 error form-group hide'>
                                 <div class='alert-danger alert'>Please correct the errors and try
                                     again.</div>
                             </div>
                         </div>
-    
+
                         <div class="row">
                             <div class="col-xs-12">
                                 <button class="btn btn-primary btn-lg " type="submit">Pay Now </button>
                             </div>
                         </div>
-                            
+
                     </form>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
-        
+
 </div>
-    
+
 	<!--================ start footer Area  =================-->
     @include('home.footer')
 <!--================ End footer Area  =================-->
@@ -328,21 +328,21 @@
 <script src="home/vendors/scroll/jquery.mCustomScrollbar.js"></script>
 <script src="home/js/theme.js"></script>
 </body>
-    
+
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    
+
 <script type="text/javascript">
-  
+
 $(function() {
-  
+
     /*------------------------------------------
     --------------------------------------------
     Stripe Payment Code
     --------------------------------------------
     --------------------------------------------*/
-    
+
     var $form = $(".require-validation");
-     
+
     $('form.require-validation').bind('submit', function(e) {
         var $form = $(".require-validation"),
         inputSelector = ['input[type=email]', 'input[type=password]',
@@ -352,7 +352,7 @@ $(function() {
         $errorMessage = $form.find('div.error'),
         valid = true;
         $errorMessage.addClass('hide');
-    
+
         $('.has-error').removeClass('has-error');
         $inputs.each(function(i, el) {
           var $input = $(el);
@@ -362,7 +362,7 @@ $(function() {
             e.preventDefault();
           }
         });
-     
+
         if (!$form.data('cc-on-file')) {
           e.preventDefault();
           Stripe.setPublishableKey($form.data('stripe-publishable-key'));
@@ -373,9 +373,9 @@ $(function() {
             exp_year: $('.card-expiry-year').val()
           }, stripeResponseHandler);
         }
-    
+
     });
-      
+
     /*------------------------------------------
     --------------------------------------------
     Stripe Response Handler
@@ -390,13 +390,13 @@ $(function() {
         } else {
             /* token contains id, last4, and card type */
             var token = response['id'];
-                 
+
             $form.find('input[type=text]').empty();
             $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
             $form.get(0).submit();
         }
     }
-     
+
 });
 </script>
 </html>
